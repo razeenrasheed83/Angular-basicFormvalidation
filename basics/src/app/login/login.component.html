@@ -1,0 +1,32 @@
+<div class="container mt-3">
+    <form #formdetails="ngForm" (ngSubmit)="formdetails.valid && onsubmit()">
+        <label for="" >Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" name="firstname" required #firstname="ngModel"
+        [(ngModel)]="data.firstname" pattern="[a-zA-Z ]*">
+        <div class="text-danger"
+        *ngIf="formdetails.submitted && firstname.errors?.['required']">required*</div>
+        <div class="text-danger" *ngIf="formdetails.submitted && firstname.errors?.['pattern']">Invalid pattern</div>
+
+        <label for="">Last Name <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" name="lastname" #lastname="ngModel"
+        [(ngModel)]="data.lastname" required pattern="[a-zA-Z ]*">
+        <div class="text-danger" *ngIf="formdetails.submitted && lastname.errors?.['required']">required</div>
+        <div class="text-danger" *ngIf="formdetails.submitted && lastname.errors?.['pattern']">Invalid pattern</div>
+
+        <label for="" >Phone Number <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" name="phoneNumber" required #phonenumber="ngModel"
+        [(ngModel)]="data.phonenumber" pattern="'[6-9]\\d{9}'">
+        <div class="text-danger"
+        *ngIf="formdetails.submitted && phonenumber.errors?.['required']">required*</div>
+        <div class="text-danger" *ngIf="formdetails.submitted && phonenumber.errors?.['pattern']">invalid Number</div>
+
+        <label for="">Email-Id <span class="text-danger">*</span></label>
+        <input type="text" class="form-control" name="email" required #email="ngModel"
+        [(ngModel)]="data.email" pattern ="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div class="text-danger" *ngIf="formdetails.submitted && email.errors?.['required']">required</div>
+        <div class="text-danger" *ngIf="formdetails.submitted && email.errors?.['pattern']">invalid Email</div>
+        <button class="btn btn-primary mt-2">submit</button>
+
+       
+    </form>
+</div>
